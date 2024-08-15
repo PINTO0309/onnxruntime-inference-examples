@@ -141,7 +141,7 @@ class Whisper {
             "num_return_sequences": new ort.Tensor(new Int32Array(this.num_return_sequences), [1]),
             "length_penalty": new ort.Tensor(new Float32Array(this.length_penalty), [1]),
             "repetition_penalty": new ort.Tensor(new Float32Array(this.repetition_penalty), [1]),
-            "attention_mask": new ort.Tensor(new Int32Array(this.attention_mask), [1, 80, 3000]),
+            //"attention_mask": new ort.Tensor(new Int32Array(this.attention_mask), [1, 80, 3000]),
         }
 
         return this.sess.run(feed);
@@ -177,7 +177,7 @@ async function process_audio(audio, starttime, idx, pos) {
             const diff = performance.now() - start;
             update_status(diff);
 
-            // append results to textarea 
+            // append results to textarea
             const textarea = document.getElementById('outputText');
             textarea.value += `${ret.str.data[0]}\n`;
             textarea.scrollTop = textarea.scrollHeight;
